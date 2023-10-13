@@ -1,0 +1,48 @@
+@model Gonderi
+
+
+<div class="w-75 border border-danger border-1 border-opacity-10 rounded mt-3">
+    <div class="ms-2 me-2">
+        <div class="w-100 mt-1 fs-3">
+            <span class="text-warning">@Model.Baslik</span>
+        </div>
+        <div class="mt-1 d-flex flex-row">
+            <div style="width: 120px;" class="border rounded">
+                @if(Model.User.ResimYol == "" || Model.User.ResimYol == null)
+                {
+                    <img src="~/img/bospp.jpg" alt="" width="100%">
+                }else
+                {
+                    <img src="~/kprofil/@Model.User.UserId/@Model.User.ResimYol" alt="" width="100%">
+                }
+            </div>
+            <div class="d-flex flex-column justify-content-between">
+                <div class="ms-2 fs-5 mt-2">
+                    <span class="text-danger">@Model.User.KullaniciAdi</span>
+                </div>
+                <div class="ms-2 fs-5 mb-2">
+                    <span>@Model.GonderiTarih</span>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 mt-1 fs-5">
+            <span>Gönderi Sayısı: @Model.User.GonderiSayi2</span>
+        </div>
+        <hr>
+        <div class="w-100 mt-3 fs-6 ms-2 me-2">
+            <p class="ms-1 me-2 text-break text-indent" style="text-indent: 5px;">@Model.Mesaj</p>
+        </div>
+        @if(Model.ResimYol != "")
+        {
+            <div class="w-75 mt-3 ms-2 me-2 mb-3">
+                <img src="~/kgonderiler/@Model.User.UserId/@Model.GonderiNo/@Model.ResimYol" alt="" width="100%" style="max-width: 500px;">
+            </div>
+        }
+        <div>
+            @if(ViewData["admin"] == "1")
+            {
+                <a class="btn btn-danger btn-sm text-light mb-2" asp-controller="Home" asp-action="Gonderisil" asp-route-id="@Model.GonderiId">Gönderi Sil</a>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+@model User
+    @{
+        ViewData["Title"] = "Kayıt Ol";
+
+        ViewData["girisyapildi"] = "0";
+        ViewData["kullaniciad"] = "";
+        ViewData["resimurl"] = "";
+    }
+    
+    <div class="ms-4 me-4">
+        <h1>Kayıt Ol</h1>
+        <hr style="height: 3px;">
+        <div asp-validation-summary="All"></div>
+        <div style="margin: auto; margin-top: 100px; width: 500px;">
+            <form asp-controller="Home" asp-action="Kayitol" method="post">
+                <div class="mt-2">
+                    <label asp-for="KullaniciAdi" class="form-label"></label>
+                    <input asp-for="KullaniciAdi" class="form-control form-control-sm w-75">
+                    <div asp-validation-for="KullaniciAdi"></div>
+                </div>
+                <div class="mt-2">
+                    <label asp-for="Eposta" class="form-label"></label>
+                    <input asp-for="Eposta" class="form-control form-control-sm w-75">
+                    <div asp-validation-for="Eposta"></div>
+                </div>
+                <div class="mt-2">
+                    <label asp-for="Sifre" class="form-label">Şifre</label>
+                    <input asp-for="Sifre" class="form-control form-control-sm w-75">
+                    <div asp-validation-for="Sifre"></div>
+                </div>
+                <button type="submit" class="btn btn-lg btn-warning mt-3">Kayıt Ol</button>
+            </form> 
+        </div>
+    </div>

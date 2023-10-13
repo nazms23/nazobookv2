@@ -1,0 +1,49 @@
+@model HomeIndexModel
+    @{
+        ViewData["Title"] = "Duyurular";
+
+        ViewData["girisyapildi"] = "0";
+        ViewData["kullaniciad"] = "";
+        ViewData["resimurl"] = "";
+        ViewData["admin"] = "0";
+
+        if(Model.User != null)
+        {
+            ViewData["girisyapildi"] = "1";
+            ViewData["kullaniciad"] = Model.User.KullaniciAdi;
+            @if(Model.User.ResimYol == "" || Model.User.ResimYol == null)
+            {
+                ViewData["resimurl"] = "/img/bospp.jpg";  
+            }else
+            {
+                ViewData["resimurl"] = "/kprofil/"+@Model.User.UserId+"/"+@Model.User.ResimYol;
+            }
+            if(Model.User.isAdmin)
+            {
+                ViewData["admin"] = "1";
+            }
+        }
+    }
+    
+    <div class="ms-4 me-4">
+        <h1>Duyurular</h1>
+        <hr style="height: 3px;">
+        
+        
+        
+    
+        <div class="mt-3 d-flex justify-content-center flex-column align-items-center">
+    
+            @foreach(var gonderi in Model.Gonderi)
+            {
+                @if(gonderi.isDuyuru == true)
+                {
+                    @await Html.PartialAsync("_duyuru", gonderi)
+                }
+            }
+            
+    
+    
+        </div>
+    
+    </div>

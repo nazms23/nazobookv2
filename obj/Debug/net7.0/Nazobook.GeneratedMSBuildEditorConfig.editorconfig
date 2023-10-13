@@ -1,0 +1,81 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Nazobook
+build_property.RootNamespace = Nazobook
+build_property.ProjectDir = C:\AspProjeler\Nazobook\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\AspProjeler\Nazobook
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/AspProjeler/Nazobook/Views/Home/Duyurular.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEdXl1cnVsYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Home/Girisyap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHaXJpc3lhcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Home/Kayitol.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxLYXlpdG9sLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Home/Kurallar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxLdXJhbGxhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Profil/Ayarlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsXEF5YXJsYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Profil/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Profil/Profilim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsXFByb2ZpbGltLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Profil/Profiller.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsXFByb2ZpbGxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Shared/_duyuru.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9kdXl1cnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Shared/_gonderi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9nb25kZXJpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AspProjeler/Nazobook/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-rm6xa7lpsi

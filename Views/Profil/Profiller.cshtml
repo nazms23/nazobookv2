@@ -1,0 +1,84 @@
+@model User
+    @{
+        ViewData["Title"] = Model.KullaniciAdi + " Profili";
+
+    }
+
+    @{
+        string bandurumu = "";
+        string bandurumyazi = "";
+        if(Model.isBanned == true)
+        {
+            bandurumu = "Banlı";
+            bandurumyazi = "text-danger";
+        }
+        else
+        {
+            bandurumu = "Banlı Değil";
+            bandurumyazi = "text-success";
+        }
+    }
+    
+    <div class="ms-4 me-4">
+        <h1>@Model.KullaniciAdi Profili</h1>
+        <hr style="height: 3px;">
+        <div class="w-25 position-fixed">
+            <div class="w-50 m-auto border rounded">
+                @if(Model.ResimYol == "" || Model.ResimYol == null)
+                {
+                    <img src="~/img/bospp.jpg" alt="" width="100%">
+                }else
+                {
+                    <img src="~/kprofil/@Model.UserId/@Model.ResimYol" alt="" width="100%">
+                }
+                
+            </div>
+            <hr>
+            <div class="w-100 mt-4 ms-2">
+                <h5>Kullanıcı Adı : @Model.KullaniciAdi</h5>
+            </div>
+            <div class="w-100 mt-2 ms-2">
+                <h5>Eposta : @Model.Eposta</h5>
+            </div>
+            <div class="w-100 mt-2 ms-2">
+                <h5>Oluşturma Tarihi : @Model.Tarih</h5>
+            </div>
+            <div class="w-100 mt-2 ms-2">
+                <h5>Ban Durumu : <span class="@bandurumyazi">@bandurumu</span></h5>
+            </div>
+            <div class="w-100 mt-2 ms-2">
+                <h5>Gönderi Sayısı : @Model.GonderiSayi2</h5>
+            </div>
+            @if(ViewData["admin"] == "1" && Model.isAdmin == false && !Model.isBanned)
+            {
+                <a asp-controller="Admin" asp-action="Banla" asp-route-id="@Model.UserId" class="btn btn-danger">Kullanıcıyı Banla</a>
+            }
+            @if(ViewData["admin"] == "1" && Model.isAdmin == false && Model.isBanned)
+            {
+                <a asp-controller="Admin" asp-action="Banac" asp-route-id="@Model.UserId" class="btn btn-success">Banı Aç</a>
+            }
+        </div>
+        <div class="d-flex flex-row w-100 ">
+            <div class="w-25">
+            </div>
+            <div class="w-75">
+                <div class="d-flex justify-content-center flex-column align-items-center">
+                    @if(Model.Gonderiler != null || Model.Gonderiler.Count() != 0)
+                    {
+                        foreach(var gonderi in Model.Gonderiler)
+                        {
+                            @if(gonderi.isDuyuru != true)
+                            {
+                                @await Html.PartialAsync("_gonderi", gonderi)
+                            }else
+                            {
+                                @await Html.PartialAsync("_duyuru", gonderi)
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        
+
+    </div>

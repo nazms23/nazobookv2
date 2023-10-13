@@ -1,0 +1,28 @@
+@model Usergirismodel
+    @{
+        ViewData["Title"] = "Giriş Yap";
+
+        ViewData["girisyapildi"] = "0";
+        ViewData["kullaniciad"] = "";
+        ViewData["resimurl"] = "";
+    }
+    
+    <div class="ms-4 me-4">
+        <h1>Giriş Yap</h1>
+        <hr style="height: 3px;">
+        <div asp-validation-summary="All"></div>
+        <div style="margin: auto; margin-top: 100px; width: 500px;">
+            <form asp-controller="Home" asp-action="Girisyap" method="post">
+                <div class="mt-2">
+                    <label asp-for="Eposta" class="form-label"></label>
+                    <input asp-for="Eposta" class="form-control form-control-sm w-75">
+                </div>
+                <div class="mt-2">
+                    <label asp-for="Sifre" class="form-label">Şifre</label>
+                    <input asp-for="Sifre" class="form-control form-control-sm w-75">
+                    <div asp-validation-for="Sifre"></div>
+                </div>
+                <button type="submit" class="btn btn-lg btn-warning mt-3">Giriş Yap</button>
+            </form> 
+        </div>
+    </div>

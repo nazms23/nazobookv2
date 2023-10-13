@@ -1,0 +1,38 @@
+    @model User
+    @{
+        ViewData["Title"] = "Kurallar";
+
+        ViewData["girisyapildi"] = "0";
+        ViewData["kullaniciad"] = "";
+        ViewData["resimurl"] = "";
+
+
+        if(Model != null)
+        {
+            ViewData["girisyapildi"] = "1";
+            ViewData["kullaniciad"] = Model.KullaniciAdi;
+            @if(Model.ResimYol == "" || Model.ResimYol == null)
+            {
+                ViewData["resimurl"] = "/img/bospp.jpg";  
+            }else
+            {
+                ViewData["resimurl"] = "/kprofil/"+@Model.UserId+"/"+@Model.ResimYol;
+            }
+        }
+    }
+    
+    <div class="ms-4 me-4">
+        <h1>Kurallar</h1>
+        <hr style="height: 3px;">
+        <div class="mt-3 text-warning">
+            <h4>Herkes istediğini paylaşabilir cinsel içerik haricinde</h4>
+            <br>
+            <h4>Paylaşılan din ve siyasetle ilgili şeylerden paylaşımı yapan kişi sorumludur</h4>
+            <br>
+            <h4>Herhangi bir şifrelerin çalınması gibi durumda sorumluluk kabul etmiyorum zaten kayıt olurken kocaman yazdım</h4>
+            <br>
+            <h4>Kayıt olduğunuz anda bunları kabul etmiş sayılırsınız</h4>
+        </div>
+        
+    
+    </div>

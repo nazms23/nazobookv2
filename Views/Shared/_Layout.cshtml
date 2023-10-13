@@ -1,0 +1,114 @@
+﻿@{
+    string anasayfaA = "";
+    string duyurularA = "";
+    string kurallarA = "";
+    string girisyapA = "";
+    string kayitolA = "";
+
+    if(ViewData["Title"] == "Anasayfa")
+    {
+        anasayfaA = "active";
+    }
+    else if(ViewData["Title"] == "Duyurular")
+    {
+        duyurularA = "active";
+    }
+    else if(ViewData["Title"] == "Kurallar")
+    {
+        kurallarA = "active";
+    }
+    else if(ViewData["Title"] == "Giriş Yap")
+    {
+        girisyapA = "active";
+    }
+    else if(ViewData["Title"] == "Kayıt Ol")
+    {
+        kayitolA = "active";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Nazobook</title> 
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Nazobook.styles.css" asp-append-version="true" />
+</head>
+<body class="text-light" style="background-color: #383838;">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom-dark box-shadow mb-3"  data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/NazoBook.png" alt="" width="50px"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link @anasayfaA" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @duyurularA" asp-area="" asp-controller="Home" asp-action="Duyurular">Duyurular</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @kurallarA" asp-area="" asp-controller="Home" asp-action="Kurallar">Kurallar</a>
+                        </li>
+                        
+                        @if( ViewData["girisyapildi"] == "0" )
+                        {
+                            <li>
+                                <span class="nav-link active">|</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @girisyapA" asp-area="" asp-controller="Home" asp-action="Girisyap">Giriş Yap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @kayitolA" asp-area="" asp-controller="Home" asp-action="Kayitol">Kayıt Ol</a>
+                            </li>
+                        }else if( ViewData["girisyapildi"] == "1" )
+                        {
+                            <li>
+                                <span class="nav-link active">|</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @kurallarA text-danger" asp-area="" asp-controller="Home" asp-action="Cikisyap">Çıkış Yap</a>
+                            </li>
+                        }
+                        
+                    </ul>
+                </div>
+                @if( ViewData["girisyapildi"] == "1" )
+                {
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1 flex-lg-row-reverse">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Profil" asp-action="Profilim"> <span class="fs-5 me-2">@ViewData["kullaniciad"]</span> <img src='@ViewData["resimurl"]' alt="" width="40px" height="40px"></a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted bg-dark" style="box-shadow: 0px 0px 10px 0px #747474;">
+        <div class="container text-light">
+            &copy; 2023 - Nazobook - <a class="text-light text-decoration-none" asp-area="" asp-controller="Home" asp-action="Duyurular">Duyurular</a> - <a class="text-light text-decoration-none" asp-area="" asp-controller="Home" asp-action="Kurallar">Kurallar</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

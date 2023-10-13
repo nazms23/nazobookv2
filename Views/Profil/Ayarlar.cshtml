@@ -1,0 +1,41 @@
+@model UserModel
+    @{
+        ViewData["Title"] = "Ayarlar";
+
+        
+    }
+    
+    <div class="ms-4 me-4">
+        <h1>Ayarlar</h1>
+        <hr style="height: 3px;">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <input asp-for="UserId" style="display: none;">
+            <form asp-controller="Profil" asp-action="Ayarlar" method="post" enctype="multipart/form-data">
+                <div class="mt-2">
+                    <label asp-for="KullaniciAdi" class="form-label"></label>
+                    <input asp-for="KullaniciAdi" class="form-control form-control-sm w-25">
+                    <div asp-validation-for="KullaniciAdi"></div>
+                </div>
+                <div class="mt-2">
+                    <label asp-for="Eposta" class="form-label"></label>
+                    <input asp-for="Eposta" class="form-control form-control-sm w-25">
+                    <div asp-validation-for="Eposta"></div>
+                </div>
+                <div class="mt-2">
+                    <label for="yenisifre" class="form-label">Yeni Şifre</label>
+                    <input type="password" name="yenisifre" class="form-control form-control-sm w-25">
+                </div>
+                <div class="mt-2">
+                    <label for="profilfoto" class="form-label">Profil Resmi</label>
+                    <input type="file" name="profilfoto" class="form-control form-control-sm w-50">
+                </div>
+                <hr>
+                <div class="mt-2">
+                    <label for="sifreonayla" class="form-label">Şifre Onayla</label>
+                    <input type="password" name="sifreonayla" class="form-control form-control-sm w-25">
+                </div>
+                <button type="submit" class="btn btn-lg btn-warning mt-3">Onayla</button>
+            </form> 
+        </div>
+    </div>

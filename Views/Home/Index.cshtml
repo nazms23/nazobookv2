@@ -1,0 +1,116 @@
+﻿@model HomeIndexModel
+@{
+    ViewData["Title"] = "Anasayfa";
+
+    ViewData["girisyapildi"] = "0";
+    ViewData["kullaniciad"] = "";
+    ViewData["resimurl"] = "";
+    ViewData["admin"] = "0";
+    ViewData["kullaniciid"] = "0";
+
+    if(Model.User != null)
+    {
+        ViewData["girisyapildi"] = "1";
+        ViewData["kullaniciad"] = Model.User.KullaniciAdi;
+        @if(Model.User.ResimYol == "" || Model.User.ResimYol == null)
+        {
+            ViewData["resimurl"] = "/img/bospp.jpg";  
+        }else
+        {
+            ViewData["resimurl"] = "/kprofil/"+@Model.User.UserId+"/"+@Model.User.ResimYol;
+        }
+        
+        ViewData["kullaniciid"] = Model.User.UserId.ToString();
+        if(Model.User.isAdmin)
+        {
+            ViewData["admin"] = "1";
+        }
+    }
+
+}
+
+<div class="ms-4 me-4">
+    <h1>Anasayfa</h1>
+    <hr style="height: 3px;">
+    @if(Model.User != null)
+    {
+        <div class="d-flex justify-content-center">
+            @if(Model.User.isBanned == false)
+            {
+                <div class="mt-2 w-75">
+                    <h3 >Gönderi Paylaş</h3>
+                    <form asp-controller="Home" asp-action="Gonder" method="post" enctype="multipart/form-data">
+                        <input type="number" style="display: none;" value="@Model.User.UserId" name="UserId">
+                        <div class="mt-2">
+                            <label for="" class="form-label">Başlık</label>
+                            <input type="text" name="Baslik" id="" class="form-control form-control-sm w-50">
+                        </div>
+                        <div class="mt-2">
+                            <textarea style="resize: none;" name="Mesaj" id="" cols="30" rows="5" class="form-control form-control-sm w-50" placeholder="Mesajını Yaz..."></textarea>
+                        </div>
+                        <div class="mt-2">
+                            <label for="" class="form-label">Resim Ekle</label>
+                            <input type="file" name="gonderifoto" class="form-control form-control-sm w-50">
+                        </div>
+                        @if(ViewData["admin"] == "1")
+                        {
+                            <div class="mt-2 form-check">
+                                <input type="checkbox" name="Duyuru" value="1" class="form-check-input">
+                                <label for="" class="form-check-label" id="flexCheckDefault">Duyuru</label>
+                            </div>
+                        }
+                        <button type="submit" class="btn btn-warning mt-2">Gönder</button>
+                    </form>
+                    <hr style="height: 3px;">
+                </div>    
+            }else
+            {
+                <h1 class="text-danger">BANLI OLDUĞUN İÇİN GÖNDERİ GÖNDEREMEZSİN</h1>
+            }
+            
+        </div>
+        <div class="mt-3 d-flex justify-content-center flex-column align-items-center">
+
+            @foreach(var gonderi in Model.Gonderi)
+            {
+                @if(gonderi.isDuyuru != true)
+                {
+                    @await Html.PartialAsync("_gonderi", gonderi)
+                }else
+                {
+                    @await Html.PartialAsync("_duyuru", gonderi)
+                }
+            }
+        </div>
+        
+    }else
+    {
+        <div class="mt-3 d-flex justify-content-center flex-column align-items-center">
+            @{
+                int sayac = 0;
+            }
+            @foreach(var gonderi in Model.Gonderi)
+            {
+                if(sayac <= 4)
+                {
+                    @if(gonderi.isDuyuru != true)
+                    {
+                        @await Html.PartialAsync("_gonderi", gonderi)
+                    }else
+                    {
+                        @await Html.PartialAsync("_duyuru", gonderi)
+                    }
+                }
+                sayac++;
+                
+            }
+            <h1>DEVAMINI GÖRMEK İÇİN <a style="text-decoration: none;" asp-area="" asp-controller="Home" asp-action="Girisyap">Giriş Yap</a> </h1>
+        </div>
+    }
+    
+    
+    
+
+    
+
+</div>
